@@ -5,6 +5,8 @@ Easily build mupen64plus. Just clone the repo and run `bash build.sh fetch` and 
 
 This script requires root privliedges for now.
 
+This script only builds the command-line version of mupen64plus.
+
 
 ## About
 
