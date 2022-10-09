@@ -5,7 +5,7 @@ cmd=$1
 echo CMD $cmd
 shift
 
-j=-j$(nproc)
+j="-j2"
 makecmd="make $j BITS=64 OPENCV=0 OSD=0"
 
 URL_PREFIX=https://github.com/mupen64plus/
@@ -20,6 +20,10 @@ for repo in `cat REPOS`; do
 		continue
 	elif [[ $cmd == "unlink" ]]; then
 		rm -fr $repo
+		continue
+	elif [[ $cmd == "refetch" ]]; then
+		rm -fr $repo
+		git clone ${URPL_PREFIX}${repo}
 		continue
 	fi
 	pushd $repo
@@ -45,6 +49,7 @@ for repo in `cat REPOS`; do
 			elif [[ $cmd == "" ]]; then
 				$makecmd all
 				$makecmd install
+				$makecmd clean
 			elif [[ $cmd == "dbg" ]]; then
 				$makecmd uninstall
 				$makecmd clean
