@@ -23,7 +23,7 @@ for repo in `cat REPOS`; do
 		continue
 	elif [[ $cmd == "refetch" ]]; then
 		rm -fr $repo
-		git clone ${URPL_PREFIX}${repo}
+		git clone ${URL_PREFIX}${repo}
 		continue
 	fi
 	pushd $repo
